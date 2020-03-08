@@ -1,38 +1,249 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans&display=swap');
+
+
+:root{
+  --primaryColor : #5fb7ea;
+  --primaryRGBA : rgba(0,0,0,0.5);
+  --mainGrey: #fafafa;
+  --darkGrey: #5f5e5e;
+  --mainWhite: #fff;
+  --mainBlack: #222;
+  --mainTransition : 0.3s all ease-in-out;
+  --mainSpacing : 0.3rem
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+  font-family: 'Open Sans', sans-serif !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.text-main {
+  font-family: 'Montserrat', sans-serif;
+  color : red;
+}
+.cart{
+  margin-right : 200px;
+  position: relative;
+  cursor: pointer;
+}
+.cart-link{
+  font-size: 1.5rem;
+}
+.cart > span{
+  position: absolute;
+  top: -12px;
+  left: 15px;
+  background: var(--primaryColor);
+  padding: 1px 3px;
+  border-radius: 50%;
+}
+.img-container{
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 350px;
+  transition: 1.5s;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.imgs{
+  cursor: pointer;
+  transition: 1.5s;
+  background: #ccc;
+  width: 100%;
+}
+.imgs:hover{
+  transform: scale(1.1);
+}
+.but{
+  background: #000;
+  color: #fff;
+  padding: 12px;
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+}
+.but:hover{
+  text-decoration: none;
+  color: #ccc;
+}
+.search{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 50px;
+  cursor: pointer;
+  color: #fff;
+  transition:1.5s;
+  opacity: 0;
+}
+.img-container:hover .imgs{
+  opacity: .3;
+}
+.img-container:hover .search{
+  opacity: 1;
+}
+
+.iconn{
+  font-size: 1rem;
+  background: var(--primaryRGBA);
+  margin: 1rem 1rem 1rem 0;
+  color:#ccc;
+  background: #000;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  width: 400px;
+  outline: none;
+}
+.icons-item{
+  cursor: pointer;
+}
+/* ********************* */
+.content{
+  background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.5)), url(./image/background.jpeg)  center/cover no-repeat;
+  height: 100vh;
+}
+.form{
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  height: 100vh;
+}
+.divs{
+  width: 500px;
+  overflow: hidden;
+  background: #fff;
+  padding: 20px;
+  border-radius: 0.5rem;
+}
+
+.label-email,.label-password{
+  display: block;
+  padding:4px 10px;
+  margin: 0 23px;
+  font-weight: bold;
+}
+
+#text , #pass,#name{
+  font-size: 19px;
+  margin: 0 10px;
+  color: #000;
+  outline: none;
+  display: block;
+  margin: 0px auto 0px auto;
+  font-size: 20px;
+  padding:7px 10px;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+}
+input{
+  width: 400px;
+}
+.butt{
+  padding: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 15px 7px 0px 33px;
+  border-radius: 0.5rem;
+}
+.but-google{
+    width: 96%;
+    background: #e64334!important;
+    border-radius: 0.5rem;
+}
+.but-reg{
+  width: 86%;
+  border-radius: 0.5rem;
+  margin: 0px 7px 0px 33px;
+}
+.message{
+  color: #000;
+  text-align: center;
+  padding: 15px 0px 0px 0px;
+  font-weight: bold;
+}
+/* .hide{
+  display: none;
+} */
+.flex-signout{
+  background: none;
+  border-radius: 0.5rem;
+  border: 0;
+  color: red;
+  font-weight: 500;
+  width: 80px;
+}
+#google{
+  width: 100%;
+  background: none;
+  border: 0;
+  border: 2px solid #4caf50;
+  display: block;
+  margin: auto;
   color: white;
+  padding: 7px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 12px 0;
+  outline: none;
 }
-
-.App-link {
-  color: #61dafb;
+.flex{
+  margin-top: 10px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.flex-reg{
+  display: block;
+  width: 90%;
+  margin: 10px 33px;
+}
+.icon{
+  font-size: 35px!important;
+  padding-bottom: 6px;
+  color: #fff;
+  margin: 1rem 0 1rem 0!important;
+  background: none!important;
+  
+}
+.icon-googlee{
+  font-size:27px;
+  padding: 0px 10px 0 0;
+}
+.hh{
+  display: none;
+}
+@media (max-width:600px){
+  .divs{
+    width: 300px;
+    padding: 20px 20px 20px 50px;
   }
-  to {
-    transform: rotate(360deg);
+  .label-email,.label-password{
+    display: block;
+    padding:4px 0px;
+    margin: 0;
+    font-weight: bold;
+  }
+  .butt{
+    width: 85%;
+    margin: 0px 7px 0px 3px;
+  }
+  .but-reg{
+  margin: 0px 7px 0px 3px;
+  }
+  .flex-reg{
+    display: block;
+    width: 90%;
+    margin: 10px 3px;
+  }
+  #text , #pass,#name{
+    font-size: 19px;
+    color: #000;
+    outline: none;
+    display: block;
+    margin: 0;
+    width: 85%;
+    font-size: 20px;
+    padding:7px 10px;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
   }
 }
