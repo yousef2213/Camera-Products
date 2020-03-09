@@ -102,7 +102,7 @@ body{
 /* ********************* */
 .content{
   background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.5)), url(./image/background.jpeg)  center/cover no-repeat;
-  height: 100vh;
+  height: 100%;
 }
 .form{
   display: flex;
@@ -111,10 +111,10 @@ body{
   height: 100vh;
 }
 .divs{
-  width: 500px;
+  width:400px;
   overflow: hidden;
   background: #fff;
-  padding: 20px;
+  padding: 30px 20px 50px 20px;
   border-radius: 0.5rem;
 }
 
@@ -138,20 +138,20 @@ body{
   border-radius: 0.5rem;
 }
 input{
-  width: 400px;
+  width: 300px;
 }
-.butt{
+/* .butt{
   padding: 5px;
   font-size: 18px;
   cursor: pointer;
   margin: 15px 7px 0px 33px;
   border-radius: 0.5rem;
-}
-.but-google{
+} */
+/* .but-google{
     width: 96%;
     background: #e64334!important;
     border-radius: 0.5rem;
-}
+} */
 .but-reg{
   width: 86%;
   border-radius: 0.5rem;

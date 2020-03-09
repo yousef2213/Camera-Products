@@ -34,13 +34,18 @@ export default class Authen extends Component {
         const auth = firebase.auth();
         const promise = auth.signInWithEmailAndPassword(email,password);
         promise.then(users =>{
-            this.setState({isLogin : true})
+            this.setState({
+                isLogin : true,
+                err : ""
+            })
         })
         promise.catch(e=>{
             var err = e.message;
-            this.setState({
-                err: err
-            })
+            if(err === "The email address is badly formatted."){
+                document.querySelector(".message").style.color = "#b33f3f";
+                document.querySelector(".message").style.paddingBottom = "10px";
+            }
+            this.setState({err})
         })
     }
     
@@ -57,10 +62,14 @@ export default class Authen extends Component {
 
             promise
             .then(users =>{
-                var err = "Welcome " + users.user.email;
+                var err = "Welcome " +  this.refs.name.value;
+                document.querySelector(".message").style.color = "green";
+                document.querySelector(".message").style.paddingBottom = "10px";
                 firebase.database().ref('users/'+users.user.uid).set({
+                    Name : users.user.displayName,
                     email : users.user.email
                 });
+                
                 this.setState({err : err})
                 hel.classList.remove("flex")
                 hel.classList.add("hh")
@@ -81,20 +90,20 @@ export default class Authen extends Component {
         })
     };
 
-    google(){
-        console.log("hello to google");
-        var provider = new firebase.auth.GoogleAuthProvider();
-        var promise = firebase.auth().signInWithPopup(provider);
-        promise.then(result =>{
-            var user = result.user;
-            firebase.database().ref('users/'+ user.uid).set({
-                Name : user.displayName,
-                email : user.email
-            });
-            this.setState({isLogin : true})
-        })
-        promise.catch(e => this.setState({err : e.message}))
-    };
+    // google(){
+    //     console.log("hello to google");
+    //     var provider = new firebase.auth.GoogleAuthProvider();
+    //     var promise = firebase.auth().signInWithPopup(provider);
+    //     promise.then(result =>{
+    //         var user = result.user;
+    //         firebase.database().ref('users/'+ user.uid).set({
+    //             Name : user.displayName,
+    //             email : user.email
+    //         });
+    //         this.setState({isLogin : true})
+    //     })
+    //     promise.catch(e => this.setState({err : e.message}))
+    // };
 
 
 
@@ -107,7 +116,7 @@ export default class Authen extends Component {
         this.Login = this.Login.bind(this);
         this.SingUp = this.SingUp.bind(this);
         this.SingOut = this.SingOut.bind(this);
-        this.google = this.google.bind(this);
+        //this.google = this.google.bind(this);
     }
     render() {
         var login;
@@ -131,15 +140,18 @@ export default class Authen extends Component {
                         </div>
                         <h6 className="message">{this.state.err}</h6>
                         <div className="flex">
-                            <input type="button" className="btn btn-primary butt" onClick={this.Login} value="Login" />
+                            <input type="button" className="btn btn-primary but-reg" onClick={this.Login} value="Login" />
                         </div>
-                        <hr />
+                        <div className="flex">
+                                <button className="btn btn-primary but-reg"  id="" onClick={this.SingUp} > Register</button>
+                        </div>
+                        {/* <hr />
                         <div className="flex">
                                 <button className="btn btn-primary but-reg"  id="" onClick={this.SingUp} > Register</button>
                         </div>
                         <div className="flex-reg">
                             <button className="btn btn-info but-google"  id="" onClick={this.google} ><FaGoogle className="icon-googlee" />Sign With Google</button>
-                        </div>
+                        </div> */}
                         
                     </div>
                 </div>
